@@ -7,12 +7,19 @@
 //
 
 import UIKit
-
+import MyCocoapodsLibrary
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let log = Logger()
+        log.printLog()
+        let frameworkBundle = Bundle(for: Logger.self)
+        let path = frameworkBundle.path(forResource: "Resources", ofType: "bundle")
+        let resourcesBundle = Bundle(url: URL(fileURLWithPath: path!))
+        let image = UIImage(named: "flower.jpeg", in: resourcesBundle, compatibleWith: nil)
+        
+        print(image)
     }
 
     override func didReceiveMemoryWarning() {
